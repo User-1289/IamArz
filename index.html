@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Random quote generator</title>
+<style>
+body{
+   background-color: #009578;
+   font-family:sans-serif;
+}
+
+#container{
+	background-color:black;
+	border:5px solid white;
+	height:280px;
+	width:1000px;
+	margin:20px auto;
+	text-align:center;
+}
+
+#btn{
+	margin: 50px auto;
+	height:53px;
+	width:250px;
+	font-size:22px;
+	background-color: rgb(193, 191, 191 )
+}
+#output{
+	margin:25px auto;
+	color:white;
+	font-size:25px;
+}
+#sportquotes{
+	height:60px;
+	width:150px;
+	font-size:22px;
+}
+#motquote{
+	height:60px;
+	width:150px;
+	font-size:22px;
+}
+#lifequote{
+	height:60px;
+	width:150px;
+	font-size:22px;
+	position:relative;
+	bottom:-12px;
+}
+.next{
+	width:60px;
+	height:30px;
+	position:relative;
+	bottom:-70px;
+	right:350px;
+	text-align:center;
+	background-color:skyblue;
+}
+
+.prev{
+	width:65px;
+	height:30px;
+	position:relative;
+	bottom:-70px;
+	right:350px;
+	text-align:center;
+	background-color:skyblue;
+}
+</style>
+</head>
+<body>
+  <div id="container">
+  <button id="lifequote" onclick="myFunction1()">Life quotes</button>
+<button id="motquote" onclick="myFunction2()">Motivational quotes</button>
+ <button id="btn">Click here to generate a random quote</button>
+<button id="sportquotes" onclick="myFunction3()">Sports quotes</button>
+<button class='next'id="next-btn1" onclick="nextThing1()">Next</button>
+<button class='next' id="next-btn2" onclick="nextThing2()">Next</button>
+<button  class='next' id="next-btn3" onclick="nextThing3()">Next</button>
+<button  class='next' id="next-btn4" onclick="nextThing4()">Next</button>
+<button class="prev" id="prev-btn1" onclick='prevThing1()'>Previous</button>
+<button class="prev" id="prev-btn2" onclick="prevThing2()">Previous</button>
+<button class="prev" id="prev-btn3" onclick='prevThing3()'>Previous</button>
+<button class="prev" id="prev-btn4" onclick="prevThing4()">Previous</button>
+  <div id="output">Press the button to generate a quote</div>
+  </div>
+  <script>
+  let btn=document.getElementById('btn');
+let output=document.getElementById('output');
+
+let lfQuotes = document.getElementById('lifequote').style.display='none';
+let spQuotes = document.getElementById('sportquotes').style.display='none';
+let moQuotes =document.getElementById('motquote').style.display='none';
+
+let nextButton1 = document.getElementById('next-btn1').style.display='none'
+let nextButton2 = document.getElementById('next-btn2').style.display='none'
+let nextButton3 = document.getElementById('next-btn3').style.display='none'
+let nextButton4 = document.getElementById('next-btn4').style.display='none'
+
+let prevBtn1 = document.getElementById('prev-btn1').style.display='none'
+let prevBtn2 = document.getElementById('prev-btn2').style.display='none'
+let prevBtn3 = document.getElementById('prev-btn3').style.display='none'
+let prevBtn4 = document.getElementById('prev-btn4').style.display='none'
+
+/*let vbox = document.getElementById('box')
+let vtext = document.getElementById('text').value
+let vbutton = document.getElementById('button')*/
+let quote=
+[
+ '"life is like riding a bicycle." - Albert Einstein',
+'"I think, therefore I am."- Rene Descartes',
+'"Time is money."', 
+'"I came, I saw, I conquered."',
+'"When life gives you lemons, make lemonade."',
+'"practice makes perfect."',
+'"knowledge is power."',
+'"Have no fear of perfection, youll never reach it."',
+];
+
+let quoteSports =
+[
+'"I have missed more than 9000 shots in my career. I have lost almost 300 games. 26 times, I have been trusted to take the game winning shot and missed. I have failed over and over and over again in my life. And that is why I succeed." -Michael Jordan',
+'"You cannot win unless you learn how to lose."',
+'" Do not be afraid Of failure. ..."',
+'"You must not only have competitiveness but ability, regardless of the circumstance you face, to never quit."',
+'"Winners never quit , Quitters never win"'
+]
+
+let quoteLife = 
+[
+'"The purpose of our lives is to be happy" -   Dalai Lama',
+'"Many of lifes failures are people who did not realize how close they were to success when they gave up." - Thomas A. Edison',
+'"If you want to live a happy life, tie it to a goal, not to people or things." - Albert Einstein',
+'"Your time is limited, so do not waste it living someone else life. Do not be trapped by dogma - which is living with the results of other peoples thinking." - Steve Jobs',
+'"Do all the good you can, for all the people you can, in all the ways you can, as long as you can." - Hillary Clinton'
+]
+
+let quoteMot = 
+[
+'"When you have a dream, you’ve got to grab it and never let go." - Carol Burnett',
+'"There is nothing impossible to they who will try." - Alexander the Great',
+'"You define your own life. Don’t let other people write your script." - Oprah Winfrey',
+'"You are never too old to set another goal or to dream a new dream." -  Malala Yousafzai',
+'"Do not allow people to dim your shine because they are blinded. Tell them to put some sunglasses on." - Lady Gaga'
+]
+
+/*let arrquote = [vtext.value]
+
+vbutton.addEventListener('click', function(){
+let arrsQuote = arrquote[Math.floor(Math.random() * arrquote.length)];
+vbox.innerHTML=arrsQuote
+})
+/*nextButton.addEventListener('click', function(){
+	currItem++;
+	if (currItem > quote.length -1 ){
+		currItem = 0;
+	}
+	output.innerHTML = quote[currItem]
+})
+/*prevButton.addEventListener('click', function(){
+	currItem--;
+	if (currItem < 0 ){
+		currItem = quote.length - 1;
+	}
+	output.innerHTML = quote[currItem]
+})
+*/
+
+btn.addEventListener('click', function(){
+	document.getElementById('lifequote').style.display='inline';
+	document.getElementById('sportquotes').style.display='inline';
+	document.getElementById('motquote').style.display='inline';
+	document.getElementById('next-btn1').style.display='inline';
+	document.getElementById('prev-btn1').style.display='inline';
+	document.getElementById('next-btn2').style.display='none'
+	document.getElementById('next-btn3').style.display='none'
+	document.getElementById('next-btn4').style.display='none'
+	document.getElementById('prev-btn2').style.display='none'
+		document.getElementById('prev-btn3').style.display='none'
+		document.getElementById('prev-btn4').style.display='none'
+	let randomQuote = quote[Math.floor(Math.random() * quote.length)];
+	output.innerHTML=randomQuote;
+})
+
+function myFunction3(){
+	document.getElementById('next-btn4').style.display='inline';
+	document.getElementById('prev-btn4').style.display='inline';
+	document.getElementById('next-btn1').style.display='none'
+	document.getElementById('next-btn2').style.display='none'
+	document.getElementById('next-btn3').style.display='none'
+		document.getElementById('prev-btn1').style.display='none'
+		document.getElementById('prev-btn3').style.display='none'
+		document.getElementById('prev-btn2').style.display='none'
+	let randomQuote3 = quoteSports[Math.floor(Math.random() * quoteSports.length)];
+	output.innerHTML = randomQuote3;
+}
+
+function myFunction2(){
+	document.getElementById('next-btn3').style.display='inline';
+		document.getElementById('prev-btn3').style.display='inline';
+	document.getElementById('next-btn1').style.display='none'
+	document.getElementById('next-btn2').style.display='none'
+	document.getElementById('next-btn4').style.display='none'
+		document.getElementById('prev-btn1').style.display='none'
+			document.getElementById('prev-btn2').style.display='none'
+				document.getElementById('prev-btn4').style.display='none'
+	let randomQuote2 = quoteMot[Math.floor(Math.random() * quoteMot.length)];
+	output.innerHTML = randomQuote2;
+}
+
+function myFunction1(){
+	document.getElementById('next-btn2').style.display='inline';
+	document.getElementById('prev-btn2').style.display='inline';
+	document.getElementById('next-btn1').style.display='none'
+	document.getElementById('next-btn4').style.display='none'
+	document.getElementById('next-btn3').style.display='none'
+		document.getElementById('prev-btn1').style.display='none'
+			document.getElementById('prev-btn4').style.display='none'
+				document.getElementById('prev-btn3').style.display='none'
+	let randomQuote1 = quoteLife[Math.floor(Math.random() * quoteLife.length)];
+	output.innerHTML = randomQuote1;
+}
+
+let currItem = 0;
+let currItem2 = 0
+let currItem3= 0
+let currItem4= 0
+window.addEventListener('DOMContentLoaded' , function(){
+let item = quote[currItem]
+let item2 = quoteLife[currItem2]
+let item3 = quoteMot[currItem3]
+let item4 = quoteSports[currItem4]
+})
+
+function nextThing1(){
+	currItem++;
+	if (currItem > quote.length -1 ){
+		currItem = 0;
+	}
+	output.innerHTML = quote[currItem]
+}
+
+function nextThing2(){
+ 	
+	currItem2++;
+	if (currItem2 > quoteLife.length -1 ){
+		currItem2 = 0;
+	}
+	output.innerHTML = quoteLife[currItem2]
+}
+function nextThing3(){
+	currItem3++;
+	if (currItem3 > quoteMot.length -1 ){
+		currItem3 = 0;
+	}
+	output.innerHTML = quoteMot[currItem3]
+}
+function nextThing4(){
+	currItem4++;
+	if (currItem4 > quoteSports.length -1 ){
+		currItem4 = 0;
+	}
+	output.innerHTML = quoteSports[currItem4]
+}
+
+function prevThing1(){
+	currItem--;
+	if (currItem < 0 ){
+		currItem = quote.length - 1;
+	}
+	output.innerHTML = quote[currItem]
+}
+
+function prevThing2(){
+	currItem2--;
+	if (currItem2 < 0 ){
+		currItem2 = quoteLife.length - 1;
+	}
+	output.innerHTML = quoteLife[currItem2]
+}
+
+function prevThing3(){
+	currItem3--;
+if (currItem3 < 0 ){
+		currItem3 = quoteMot.length - 1;
+	}
+	output.innerHTML = quoteMot[currItem3]
+}
+
+function prevThing4(){
+	currItem4--;
+	if (currItem4 < 0 ){
+		currItem4 = quoteSports.length - 1;
+	}
+	output.innerHTML = quoteSports[currItem4]
+}
+
+
+  </script>
+  </body>
+  </html>
